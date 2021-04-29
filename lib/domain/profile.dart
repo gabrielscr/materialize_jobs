@@ -1,14 +1,15 @@
 class Profile {
   String name;
+  String image;
   String careerDescription;
   List<ProfileSkill> skills = [];
 
-  Profile({this.name, this.careerDescription, this.skills});
+  Profile({this.name, this.image, this.careerDescription, this.skills});
 }
 
 class ProfileSkill {
-  double rate;
+  String level;
   String description;
 
-  ProfileSkill({this.rate, this.description});
+  ProfileSkill({this.level, this.description});
 }

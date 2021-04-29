@@ -6,6 +6,7 @@ class TextWidget extends StatelessWidget {
   final double fontSize;
   final FontWeight fontWeight;
   final Color color;
+  final TextOverflow overflow;
 
   const TextWidget({
     Key key,
@@ -13,6 +14,7 @@ class TextWidget extends StatelessWidget {
     this.fontSize,
     this.fontWeight,
     this.color,
+    this.overflow,
   }) : super(key: key);
 
   @override
@@ -24,6 +26,7 @@ class TextWidget extends StatelessWidget {
         fontWeight: fontWeight,
         color: color,
       ),
+      overflow: overflow,
     );
   }
 }

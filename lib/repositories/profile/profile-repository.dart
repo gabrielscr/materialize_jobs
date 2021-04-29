@@ -1,11 +1,16 @@
 import 'package:materialize_jobs/domain/profile.dart';
+import 'package:materialize_jobs/utils/constants.dart';
 
-import 'profile-repository-interface.dart';
-
-class ProfileRepository extends ProfileRepositoryInterface {
-  @override
-  Future<Profile> get() {
-    // TODO: implement get
-    throw UnimplementedError();
+class ProfileRepository {
+  Profile get() {
+    return Profile(
+      careerDescription: 'Fullstack Developer - Flutter/.NET Core',
+      name: 'Gabriel Rocha',
+      image: Constants.profilePhoto,
+      skills: [
+        ProfileSkill(description: 'Flutter', level: 'Specialist'),
+        ProfileSkill(description: '.NET Core', level: 'Specialist'),
+      ],
+    );
   }
 }
