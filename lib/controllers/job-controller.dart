@@ -25,7 +25,7 @@ class JobController extends GetxController {
   }
 
   listByRoleId(int roleId) {
-    jobsWithRole = jobs.where((job) => job.role.id == roleId).toList();
+    jobsWithRole = jobs.where((job) => job.role.id == roleId).toList().obs;
   }
 
   get(int id) {

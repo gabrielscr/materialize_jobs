@@ -146,19 +146,24 @@ class HomeView extends StatelessWidget {
             itemBuilder: (context, index) {
               JobRole role = roles[index];
 
-              return Container(
-                margin: EdgeInsets.only(right: 10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: Colors.grey[200],
-                    )),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextWidget(
-                    text: role.title,
-                    color: Colors.grey[700],
-                    fontWeight: FontWeight.w500,
+              return InkWell(
+                onTap: () => goToPage(JobsView(
+                  jobRole: role,
+                )),
+                child: Container(
+                  margin: EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey[200],
+                      )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextWidget(
+                      text: role.title,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               );

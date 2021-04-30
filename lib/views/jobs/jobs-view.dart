@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:materialize_jobs/controllers/job-controller.dart';
+import 'package:materialize_jobs/domain/job-role.dart';
 import 'package:materialize_jobs/domain/job.dart';
 import 'package:materialize_jobs/utils/pages.dart';
 import 'package:materialize_jobs/utils/routes.dart';
@@ -15,47 +16,58 @@ import 'job-detail-view.dart';
 
 class JobsView extends StatelessWidget {
   final bool showSearch;
+  final JobRole jobRole;
 
   final JobController jobController = Get.find();
 
-  JobsView({Key key, this.showSearch = false}) : super(key: key);
+  JobsView({Key key, this.showSearch = false, this.jobRole}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: HexColor('#707070')),
-            onPressed: () => goToNamed(MaterializeJobsRoutes.home)),
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: TextWidget(
-          text: 'TODOS OS TRABALHOS',
-          fontWeight: FontWeight.w500,
-          color: Colors.grey[700],
-        ),
-      ),
-      body: Container(
-        child: ListView(
-          children: [
-            Container(
-                padding: EdgeInsets.all(15),
-                child: Visibility(
-                  visible: showSearch,
-                  child: renderSearch(),
-                )),
-            SizedBox(
-              height: 5,
+    return GetBuilder<JobController>(
+      init: JobController(),
+      initState: (_) {
+        if (jobRole != null) {
+          jobController.listByRoleId(jobRole.id);
+        }
+      },
+      builder: (_) {
+        return Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            leading: IconButton(
+                icon: Icon(Icons.arrow_back, color: HexColor('#707070')),
+                onPressed: () => goToNamed(MaterializeJobsRoutes.home)),
+            elevation: 0,
+            backgroundColor: Colors.white,
+            centerTitle: true,
+            title: TextWidget(
+              text: jobRole != null ? jobRole.title : 'TODOS OS TRABALHOS',
+              fontWeight: FontWeight.w500,
+              color: Colors.grey[700],
             ),
-            Container(
-              padding: EdgeInsets.all(10),
-              child: renderJobs(jobController.jobs),
+          ),
+          body: Container(
+            child: ListView(
+              children: [
+                Container(
+                    padding: EdgeInsets.all(15),
+                    child: Visibility(
+                      visible: showSearch,
+                      child: renderSearch(),
+                    )),
+                SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: renderJobs(jobRole != null ? jobController.jobsWithRole : jobController.jobs),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
@@ -78,6 +90,11 @@ class JobsView extends StatelessWidget {
   }
 
   renderJobs(RxList<Job> jobs) {
+    if (jobs.length == 0)
+      return Center(
+        child: TextWidget(text: 'Nenhum trabalho encontrado.'),
+      );
+
     return ListView.separated(
       separatorBuilder: (context, index) => SizedBox(
         height: 20,

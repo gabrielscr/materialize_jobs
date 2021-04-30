@@ -59,7 +59,19 @@ class JobsRepository {
         image: 'https://accendadigital.com.br/wp-content/uploads/2020/05/accenda-ecommerce.png',
         place: 'Materialize.pro',
         tags: ['Flutter'],
-        role: JobRole(id: 1, title: 'Flutter'),
+        role: JobRole(id: 5, title: 'UI/UX'),
+        requirements: [
+          JobRequirement(item: 'Experiência de 3+ anos com Flutter'),
+        ],
+        details:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, enim mollis gravida sodales, dui purus commodo tortor.'));
+
+    jobs.add(Job(
+        title: 'Construir E-Commerce 5',
+        image: 'https://accendadigital.com.br/wp-content/uploads/2020/05/accenda-ecommerce.png',
+        place: 'Materialize.pro',
+        tags: ['Flutter'],
+        role: JobRole(id: 2, title: 'Android/IOS'),
         requirements: [
           JobRequirement(item: 'Experiência de 3+ anos com Flutter'),
         ],
@@ -74,7 +86,7 @@ class JobsRepository {
     jobRoles.add(JobRole(id: 2, title: 'Android/IOS'));
     jobRoles.add(JobRole(id: 3, title: '.NET Core'));
     jobRoles.add(JobRole(id: 4, title: 'Java'));
-    jobRoles.add(JobRole(id: 1, title: 'UI/UX'));
+    jobRoles.add(JobRole(id: 5, title: 'UI/UX'));
 
     return jobRoles;
   }
