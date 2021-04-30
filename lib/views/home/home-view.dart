@@ -10,6 +10,7 @@ import 'package:materialize_jobs/domain/job.dart';
 import 'package:materialize_jobs/domain/profile.dart';
 import 'package:materialize_jobs/utils/routes.dart';
 import 'package:materialize_jobs/views/jobs/job-detail-view.dart';
+import 'package:materialize_jobs/views/jobs/jobs-view.dart';
 import 'package:materialize_jobs/views/profile/profile-view.dart';
 import 'package:materialize_jobs/widgets/loader-widget.dart';
 import 'package:materialize_jobs/widgets/text-widget.dart';
@@ -108,6 +109,10 @@ class HomeView extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(6)),
       child: TextFormField(
+        enableInteractiveSelection: false,
+        onTap: () => goToPage(JobsView(
+          showSearch: true,
+        )),
         decoration: InputDecoration(
           border: InputBorder.none,
           prefixIcon: Icon(CupertinoIcons.search),
@@ -180,7 +185,7 @@ class HomeView extends StatelessWidget {
               ),
             ),
             TextButton(
-                onPressed: () {},
+                onPressed: () => goToPage(JobsView()),
                 child: TextWidget(
                   text: 'Ver todos',
                   color: Colors.grey[400],
