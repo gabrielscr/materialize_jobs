@@ -2,11 +2,9 @@ import 'package:get/get.dart';
 import 'package:materialize_jobs/bindings/home-binding.dart';
 import 'package:materialize_jobs/bindings/intro-binding.dart';
 import 'package:materialize_jobs/bindings/jobs-binding.dart';
-import 'package:materialize_jobs/bindings/profile-binding.dart';
 import 'package:materialize_jobs/views/home/home-view.dart';
 import 'package:materialize_jobs/views/intro/intro-view.dart';
 import 'package:materialize_jobs/views/jobs/jobs-view.dart';
-import 'package:materialize_jobs/views/profile/profile-view.dart';
 import 'package:materialize_jobs/views/splash/splash-view.dart';
 
 class MaterializeJobsRoutes {
