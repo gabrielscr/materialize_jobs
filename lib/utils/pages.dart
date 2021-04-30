@@ -35,11 +35,6 @@ class MaterializeJobsPages {
       binding: IntroBinding(),
     ),
     GetPage(
-      name: MaterializeJobsRoutes.profile,
-      page: () => ProfileView(),
-      binding: ProfileBinding(),
-    ),
-    GetPage(
       name: MaterializeJobsRoutes.jobs,
       page: () => JobsView(),
       binding: JobsBinding(),

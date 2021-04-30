@@ -10,6 +10,7 @@ import 'package:materialize_jobs/domain/job.dart';
 import 'package:materialize_jobs/domain/profile.dart';
 import 'package:materialize_jobs/utils/routes.dart';
 import 'package:materialize_jobs/views/jobs/job-detail-view.dart';
+import 'package:materialize_jobs/views/profile/profile-view.dart';
 import 'package:materialize_jobs/widgets/loader-widget.dart';
 import 'package:materialize_jobs/widgets/text-widget.dart';
 
@@ -273,99 +274,103 @@ class HomeView extends StatelessWidget {
   }
 
   renderSpecialists(Profile profile) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          child: TextWidget(
-            color: Colors.grey[600],
-            text: 'Nossos especialistas',
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
+    return InkWell(
+      onTap: () => goToPage(ProfileView(profile: profile)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            child: TextWidget(
+              color: Colors.grey[600],
+              text: 'Nossos especialistas',
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            ),
           ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Container(
-          height: 170,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(right: 10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: Colors.grey[200],
-                    )),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                              height: 50,
-                              width: 50,
-                              child: ClipOval(
-                                child: CachedNetworkImage(
-                                  fit: BoxFit.cover,
-                                  imageUrl: profile.image,
-                                  placeholder: (context, url) => Center(
-                                      child: LoaderWidget(
-                                    size: 25,
-                                    color: Colors.purple[900],
-                                  )),
-                                  errorWidget: (context, url, error) => Icon(Icons.error),
-                                ),
-                              )),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          TextWidget(
-                            text: profile.name,
-                            color: Colors.grey[700],
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ],
-                      ),
-                      Divider(),
-                      Row(
-                        children: List.generate(
-                          profile.skills.length,
-                          (index) => Container(
-                            margin: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: Colors.grey[200],
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 170,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey[200],
+                      )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                                height: 60,
+                                width: 60,
+                                child: ClipOval(
+                                  child: CachedNetworkImage(
+                                    fit: BoxFit.cover,
+                                    imageUrl: profile.image,
+                                    placeholder: (context, url) => Center(
+                                        child: LoaderWidget(
+                                      size: 25,
+                                      color: Colors.purple[900],
+                                    )),
+                                    errorWidget: (context, url, error) => Icon(Icons.error),
+                                  ),
                                 )),
-                            padding: EdgeInsets.only(left: 10, right: 10),
-                            child: Column(
-                              children: [
-                                TextWidget(
-                                  text: profile.skills[index].description,
-                                  color: Colors.grey[500],
-                                ),
-                                TextWidget(
-                                  text: profile.skills[index].level,
-                                  color: Colors.grey[400],
-                                ),
-                              ],
+                            SizedBox(
+                              width: 10,
+                            ),
+                            TextWidget(
+                              text: profile.name,
+                              color: Colors.grey[500],
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: List.generate(
+                            profile.skills.length,
+                            (index) => Container(
+                              margin: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: Colors.grey[200],
+                                  )),
+                              padding: EdgeInsets.only(left: 10, right: 10),
+                              child: Column(
+                                children: [
+                                  TextWidget(
+                                    text: profile.skills[index].description,
+                                    color: Colors.grey[500],
+                                  ),
+                                  TextWidget(
+                                    text: profile.skills[index].level,
+                                    color: Colors.grey[400],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

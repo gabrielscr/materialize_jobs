@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:materialize_jobs/controllers/job-controller.dart';
 import 'package:materialize_jobs/domain/job.dart';
 import 'package:materialize_jobs/utils/pages.dart';
 import 'package:materialize_jobs/utils/routes.dart';
@@ -11,8 +10,6 @@ import 'package:materialize_jobs/widgets/text-widget.dart';
 
 class JobDetailView extends StatelessWidget {
   final Job job;
-
-  final JobController jobController = Get.find();
 
   JobDetailView({Key key, @required this.job}) : super(key: key);
 
