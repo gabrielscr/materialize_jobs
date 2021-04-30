@@ -8,6 +8,8 @@ import 'package:materialize_jobs/controllers/profile-controller.dart';
 import 'package:materialize_jobs/domain/job-role.dart';
 import 'package:materialize_jobs/domain/job.dart';
 import 'package:materialize_jobs/domain/profile.dart';
+import 'package:materialize_jobs/utils/routes.dart';
+import 'package:materialize_jobs/views/jobs/job-detail-view.dart';
 import 'package:materialize_jobs/widgets/loader-widget.dart';
 import 'package:materialize_jobs/widgets/text-widget.dart';
 
@@ -149,6 +151,7 @@ class HomeView extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: TextWidget(
                     text: role.title,
+                    color: Colors.grey[700],
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -195,65 +198,70 @@ class HomeView extends StatelessWidget {
             itemBuilder: (context, index) {
               Job job = jobs[index];
 
-              return Container(
-                width: 300,
-                height: 200,
-                margin: EdgeInsets.only(right: 10),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: Colors.grey[200],
-                    )),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                              height: 50,
-                              width: 50,
-                              child: CachedNetworkImage(
-                                fit: BoxFit.cover,
-                                imageUrl: job.image,
-                                placeholder: (context, url) => Center(
-                                    child: LoaderWidget(
-                                  size: 25,
-                                  color: Colors.purple[900],
+              return InkWell(
+                onTap: () {
+                  goToPage(JobDetailView(job: job));
+                },
+                child: Container(
+                  width: 300,
+                  height: 200,
+                  margin: EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.grey[200],
+                      )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                                height: 50,
+                                width: 50,
+                                child: CachedNetworkImage(
+                                  fit: BoxFit.cover,
+                                  imageUrl: job.image,
+                                  placeholder: (context, url) => Center(
+                                      child: LoaderWidget(
+                                    size: 25,
+                                    color: Colors.purple[900],
+                                  )),
+                                  errorWidget: (context, url, error) => Icon(Icons.error),
                                 )),
-                                errorWidget: (context, url, error) => Icon(Icons.error),
-                              )),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              TextWidget(
-                                text: job.title,
-                                fontWeight: FontWeight.w700,
-                              ),
-                              TextWidget(
-                                text: job.place,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey[500],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      TextWidget(
-                        text: job.details,
-                        color: Colors.grey[400],
-                        fontWeight: FontWeight.w500,
-                        overflow: TextOverflow.fade,
-                      )
-                    ],
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextWidget(
+                                  text: job.title,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                                TextWidget(
+                                  text: job.place,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey[500],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        TextWidget(
+                          text: job.details,
+                          color: Colors.grey[400],
+                          fontWeight: FontWeight.w500,
+                          overflow: TextOverflow.fade,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -318,6 +326,7 @@ class HomeView extends StatelessWidget {
                           ),
                           TextWidget(
                             text: profile.name,
+                            color: Colors.grey[700],
                             fontWeight: FontWeight.w500,
                           ),
                         ],
@@ -336,8 +345,14 @@ class HomeView extends StatelessWidget {
                             padding: EdgeInsets.only(left: 10, right: 10),
                             child: Column(
                               children: [
-                                TextWidget(text: profile.skills[index].description),
-                                TextWidget(text: profile.skills[index].level),
+                                TextWidget(
+                                  text: profile.skills[index].description,
+                                  color: Colors.grey[500],
+                                ),
+                                TextWidget(
+                                  text: profile.skills[index].level,
+                                  color: Colors.grey[400],
+                                ),
                               ],
                             ),
                           ),

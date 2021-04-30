@@ -19,6 +19,13 @@ class JobsRepository {
         image: 'https://accendadigital.com.br/wp-content/uploads/2020/05/accenda-ecommerce.png',
         title: 'Construir E-Commerce',
         place: 'Materialize.pro',
+        tags: ['Flutter', 'Specialist', 'Design'],
+        role: JobRole(id: 1, title: 'Flutter'),
+        requirements: [
+          JobRequirement(item: 'Experiência de 3+ anos com Flutter'),
+          JobRequirement(item: 'Experiência de 3+ anos com Design'),
+          JobRequirement(item: 'Ser especialista na ferramenta'),
+        ],
         details:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, enim mollis gravida sodales, dui purus commodo tortor.'));
 
@@ -26,6 +33,11 @@ class JobsRepository {
         title: 'Construir E-Commerce 2',
         image: 'https://accendadigital.com.br/wp-content/uploads/2020/05/accenda-ecommerce.png',
         place: 'Materialize.pro',
+        tags: ['Flutter', 'Specialist'],
+        role: JobRole(id: 1, title: 'Flutter'),
+        requirements: [
+          JobRequirement(item: 'Ser especialista na ferramenta'),
+        ],
         details:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, enim mollis gravida sodales, dui purus commodo tortor.'));
 
@@ -33,6 +45,12 @@ class JobsRepository {
         title: 'Construir E-Commerce 3',
         image: 'https://accendadigital.com.br/wp-content/uploads/2020/05/accenda-ecommerce.png',
         place: 'Materialize.pro',
+        tags: ['Flutter', 'Design'],
+        role: JobRole(id: 1, title: 'Flutter'),
+        requirements: [
+          JobRequirement(item: 'Experiência de 3+ anos com Flutter'),
+          JobRequirement(item: 'Ser especialista na ferramenta'),
+        ],
         details:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, enim mollis gravida sodales, dui purus commodo tortor.'));
 
@@ -40,6 +58,11 @@ class JobsRepository {
         title: 'Construir E-Commerce 4',
         image: 'https://accendadigital.com.br/wp-content/uploads/2020/05/accenda-ecommerce.png',
         place: 'Materialize.pro',
+        tags: ['Flutter'],
+        role: JobRole(id: 1, title: 'Flutter'),
+        requirements: [
+          JobRequirement(item: 'Experiência de 3+ anos com Flutter'),
+        ],
         details:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit, enim mollis gravida sodales, dui purus commodo tortor.'));
 
