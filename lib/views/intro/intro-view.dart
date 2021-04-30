@@ -65,7 +65,7 @@ class IntroView extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                       gradient: LinearGradient(
-                        colors: <Color>[Colors.blue[700], Colors.blue[400]],
+                        colors: <Color>[Colors.purple[700], Colors.purple[400]],
                       ),
                     ),
                     SizedBox(
